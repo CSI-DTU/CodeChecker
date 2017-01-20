@@ -115,16 +115,20 @@ def check_code(problem, code):
 
 
 #------------------------------------------------------------------------------#
-'''
+
 @app.route('/start_contest')
 def start_contest():
     username = flask_login.current_user.id
+
+    # invalid user
     if username != "Nikhil":
         return "You are not authorized to access this page!"
+    
     time = datetime.now()
-    with open("contest_clock.txt") as f:
+    with open("contest_clock.txt",'w') as f:
         f.write(str(time))
-'''    
+    create_scoreboard()
+    return "Contest clock set at %s"%(str(time))
 
 
 
@@ -149,8 +153,7 @@ def problem_page(problem_id):
             result = check_code(problem, code)
 
             if result == "Pass":
-                pass
-                #update_score(username, problem_id)
+                update_score(username, problem_id)
             
     return flask.render_template('editor.html',
                                  form = form,
