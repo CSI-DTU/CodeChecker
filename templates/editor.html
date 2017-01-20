@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<style>
+.editor{
+    padding: 10px 10px 10px 10px;
+}
+</style>
+
+
+<html>
+    <head>
+    {{ codemirror.include_codemirror()}}
+        <title>{{problem.name}} | CodeChecker</title>
+       <link rel="stylesheet" media="screen" href ="static/bootstrap.min.css">
+       <link rel="stylesheet" href="static/bootstrap-theme.min.css">
+       <meta name="viewport" content = "width=device-width, initial-scale=1.0">
+    </head>
+
+
+
+    <body> 
+    	<div class="container">
+
+    		<div class="problem-area">
+    			<h2>{{problem.name}}</h2>
+    			<p>{{problem.descr}}</p>
+    		</div>
+
+    		<div class = "editor-area">
+	    		<form  action="" method="post" role="form">
+	    			<div class = "editor" >
+	    				{{ form.source_code }}
+	   				</div>
+	       			<input type="submit" class="btn btn-info pull-center" value="SUBMIT">
+	  			</form>
+	  		</div>
+		
+		
+		{% if result != None %}
+		<div class = "result-area" >
+			<h2> Submission Result </h2>
+			<p> {{result}} </p>
+		</div>
+		{% endif %}
+
+		</div>
+	</body>
+</html>
