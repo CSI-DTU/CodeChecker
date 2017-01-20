@@ -57,8 +57,10 @@ def request_loader(request):
 
     user = User()
     user.id = username
-
-    user.is_authenticated = request.form['pw'] == users[username]['pw']
+    try:
+        user.is_authenticated = request.form['pw'] == users[username]['pw']
+    except:
+        user.is_authenticated = False
 
     return user
 
