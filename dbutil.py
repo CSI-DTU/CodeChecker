@@ -32,14 +32,20 @@ def fetch_scoreboard():
         intervals = [datetime.strptime(t ,"%Y-%m-%d %H:%M:%S.%f") - ctime for t in status[5] if t != None]
         net_time = sum(intervals,timedelta()) + timedelta(minutes=5*WAs)
         # solved problems
-        solved = status[4]
-        rows.append([username, score, net_time, solved])
+        row = [username, score, net_time]
+        row.extend(status[4])
+        print status[4]
+        rows.append(row)
+        
         
     # sort rows on basis of 1.score  2.total time 
     rows.sort(key = operator.itemgetter(1,2), reverse = True)
+
+    rows = [[(i+1)] + rows[i][:2] + rows[i][3:] for i in range(len(rows))]
+    print rows
     return rows
    
-    
+#fetch_scoreboard()    
 
 
 def update_score(username, pid, result):
@@ -62,8 +68,7 @@ def initialize_scoreboard():
     problems = c.fetchall()
     for x in range(len(users)):
         for y in range(len(problems)):
-            print (x,users[x][0],y,problems[y][0],0,0)
-            c.execute("INSERT INTO scoreboard VALUES (?,?,?,?,?,?,?)",(x,users[x][0],y,problems[y][0],0,None,0))
+            c.execute("INSERT INTO scoreboard VALUES (?,?,?,?,?,?,?)",(x+1,users[x][0],y+1,problems[y][0],0,None,0))
             conn.commit()
 
 

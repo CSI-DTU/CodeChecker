@@ -11,18 +11,18 @@
 </head>
 <body>
     <div class="container-fluid">
-        <div class="row" id="flash">
-            <br>
-            <br>
-            <div class="col-sm-2"></div>
-            <div class="col-sm-8" id="flash-message" style="display: none">
-            </div>
-            <div class="col-sm-2"></div>
-        </div>
         <div class="row">
             <div class="col-sm-2"></div>
             <div class="col-sm-8">
-                <h1 style="text-align: center">Login Form</h1>
+                <h1 style="text-align: center">Sign in to CodeChecker App</h1>
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
+        <div class="row" id="flash">
+            <br><br>
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8" id="flash-message">
+            <center>{{error}}</center>
             </div>
             <div class="col-sm-2"></div>
         </div>
@@ -31,78 +31,23 @@
             <div class="col-sm-3">
             </div>
             <div class="col-sm-6">
-                <form>
+
+                <form action='login' method='POST'>
                     <div class="form-group">
                         <label>Username</label>
                         <input type="text" class="form-control" name="username" id="username">
                     </div>
                     <div class="form-group">
                         <label>Password</label>
-                        <input type="password" class="form-control" name="password" id="password">
+                        <input type="password" class="form-control" name="pass" id="password">
                     </div>
-                    <button id="login"  class="btn btn-warning btn-lg" style="margin-left: 38%">Login</button>
+                    <button type='submit' class="btn btn-warning btn-lg" style="margin-left: 38%">Login</button>
                 </form>
-
             </div>
             <div class="col-sm-3">
-
-
             </div>
-
-
         </div>
-
     </div>
-    <script>
-
-        /* Function to be called when the user presses the login button */
-        function Login() {
-
-            var username = $('#username').val();
-            var pass = $('#password').val();
-            var flashMessage = $('#flash-message');
-            if(username == "" || username == null || pass == "" || pass == null)
-            {
-                flashMessage.css({'display' : 'block'});
-                flashMessage.html('Please type your username and password to login');
-
-            }
-            /* Object to be sent to server using post request */
-            var obj = {
-
-                username : username,
-                password : pass
-
-            };
-
-            /* Post request. Server must send an object with the following fields
-             * username_exist : true or false
-              * password_correct : true or false*/
-
-            $.post('/login' , obj, function (data, status) {
-
-                console.log(status);
-                if(data.username_exist == false)
-                {
-                    flashMessage.css({'display' : 'block'});
-                    flashMessage.html('username entered is not registered with us.');
-                    return;
-                }
-                if(data.password_correct == false)
-                {
-                    flashMessage.css({'display' : 'block'});
-                    flashMessage.html('Wrong password entered');
-                    return;
-                }
-                window.location.href = "/profile"
-            });
-        }
-
-
-        /* This function will be called when the page loads. This is like document.ready = function() */
-        $(function () {
-
-        });
-    </script>
+   
 </body>
 </html>

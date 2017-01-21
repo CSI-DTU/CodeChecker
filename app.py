@@ -34,7 +34,6 @@ login_manager = flask_login.LoginManager()
 login_manager.init_app(app)
 users = fetch_valid_users()
 
-
 class User(flask_login.UserMixin):
     pass
 
@@ -42,8 +41,7 @@ class User(flask_login.UserMixin):
 @login_manager.user_loader
 def user_loader(username):
     if username not in users:
-        return
-
+        return 
     user = User()
     user.id = username
     return user
@@ -53,43 +51,44 @@ def user_loader(username):
 def request_loader(request):
     username = request.form.get('username')
     if username not in users:
-        return
+        return None
 
     user = User()
     user.id = username
-    try:
-        user.is_authenticated = request.form['pw'] == users[username]['pw']
-    except:
-        user.is_authenticated = False
+    user.is_authenticated = request.form['password'] == users[username]['pw']
 
     return user
 
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    
     if flask.request.method == 'GET':
-        return '''
-               <form action='login' method='POST'>
-                <input type='text' name='username' id='username' placeholder='username'></input>
-                <input type='password' name='pw' id='pw' placeholder='password'></input>
-                <input type='submit' name='submit'></input>
-               </form>
-               '''
+        if flask_login.current_user.get_id() != None:
+            return flask.redirect(flask.url_for('home_page'))
+        else:
+            return flask.render_template('login.html')
 
+    error = ""
     username = flask.request.form['username']
-    if flask.request.form['pw'] == users[username]['pw']:
-        user = User()
-        user.id = username
-        flask_login.login_user(user)
-        return flask.redirect(flask.url_for('home_page'))
 
-    return 'Invalid credentials!'
+    if username not in users:
+        return flask.render_template('login.html', error = "User does not exist!")
+
+    
+    if flask.request.form['pass'] != users[username]['pw']:
+        return flask.render_template('login.html', error = "Wrong password!")
+    
+    user = User()
+    user.id = username
+    flask_login.login_user(user)
+    return flask.redirect(flask.url_for('home_page'))
 
 
 @app.route('/logout')
 def logout():
     flask_login.logout_user()
-    return 'Logged out'
+    return flask.redirect(flask.url_for('home_page'))
 
 
 @login_manager.unauthorized_handler
@@ -100,6 +99,10 @@ def unauthorized_handler():
 
 # Code checker
 def check_code(problem, code):
+    code = code.lstrip()
+    if code == None or code == "":
+        return "Fail"
+    
     testcase = problem['input']
     output = compiler.run({'lang':'python',
                            'testcases':[testcase],
@@ -116,13 +119,28 @@ def check_code(problem, code):
 
 #------------------------------------------------------------------------------#
 
+@app.route('/problems')
+@flask_login.login_required
+def show_problems():
+    problems = fetch_all_problems()
+    return flask.render_template('problems.html', problems = problems)
+
+
+
 @app.route('/scoreboard')
+@flask_login.login_required
 def scoreboard():
+    problems = fetch_all_problems()
+    headers = ["Rank", "Name", "Score"]
+    headers.extend([p.values()[1] for p in problems])
+
     scoreboard = fetch_scoreboard()
+    return flask.render_template('scoreboard.html', headers = headers, scoreboard = scoreboard)
     
 
 
 @app.route('/start_contest')
+@flask_login.login_required
 def start_contest():
     username = flask_login.current_user.id
 
@@ -138,11 +156,13 @@ def start_contest():
 
 
 
-
 @app.route('/')
-@flask_login.login_required
 def home_page():
-    return 'Logged in as: ' + flask_login.current_user.id
+    valid_user = False
+    if flask_login.current_user.get_id() != None:
+        valid_user = True
+    return flask.render_template('index.html', valid_user = valid_user)
+
 
 
 @app.route('/problem/<int:problem_id>',methods=['GET', 'POST'])
