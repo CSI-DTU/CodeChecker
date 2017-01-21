@@ -31,15 +31,27 @@
                 <h2>Please Sign Up</h2>
                 <br>
                 <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="form-group">
+                            <input type="text" name="first_name" id="first_name" class="form-control input-lg" placeholder="First Name" tabindex="1" required>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-6">
+                        <div class="form-group">
+                            <input type="text" name="last_name" id="last_name" class="form-control input-lg" placeholder="Last Name" tabindex="2" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-xs-12 col-sm-12">
                         <div class="form-group">
-                            <input type="text" name="email" id="email" class="form-control input-lg" placeholder="email" tabindex="1" required>
+                            <input type="text" name="email" id="email" class="form-control input-lg" placeholder="email" tabindex="3" required>
                         </div>
                     </div>
 
                 </div>
                 <div class="form-group">
-                    <input type="number" name="phone_number" id="phone_number" class="form-control input-lg" placeholder="Phone-Number" tabindex="3" required>
+                    <input type="number" name="phone_number" id="phone_number" class="form-control input-lg" placeholder="Phone-Number" tabindex="4" required>
                 </div>
 
                 <div class="form-group">
@@ -60,7 +72,9 @@
                 <br>
 
                 <div class="row" >
-                    <div class=" col-sm-12" ><button id="submit" style="box-shadow:5px 5px 5px black" class="btn btn-success btn-block btn-lg">Sign Up</button></div>
+                    <div class=" col-sm-12" >
+                        <button id="submit" style="box-shadow:5px 5px 5px black" class="btn btn-success btn-block btn-lg">Sign Up</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -75,23 +89,27 @@
 
         //    var username = $('#username').val();
             var age = $('#age').val();
+            console.log("GetForm Called");
             var phone = $('#phone_number').val();
             var email = $('#email').val();
             var pass1 = $('#password').val();
             var pass2 = $('#password_confirmation').val();
             var flash = $('#flash');
             var flash_message = $('#flash-message');
+            var first_name = $('#first_name').val();
+            var last_name = $('#last_name').val()
             /* Checking for empty input fields submitted by the user */
-            if(age == null || phone == null || email == null || pass1 == null || pass2 == null)
+            if(age == null || phone == null || email == null || pass1 == null || pass2 == null || age == "" || phone == "" || email == "" || pass1 == "" || pass2 == "" || first_name == null ||last_name == null || last_name == "" || first_name == "")
             {
-                flash.css('display', 'block');
-                flash_message.html('Password Confirmation failed');
+              //  console.log("Some Problem");
+                flash_message.css({'display' : 'block'});
+                flash_message.html('Please fill all the entries.');
                 return;
             }
             /* Failure of password confirmation */
             if(pass1 != pass2)
             {
-                flash.css('display', 'block');
+                flash_message.css('display', 'block');
                 flash_message.html('Password Confirmation failed');
                 pass1.val("");
                 pass2.val("");
@@ -101,6 +119,8 @@
             /* Object that has to be sent to server */
             var obj = {
 
+                first_name : first_name,
+                last_name : last_name,
                 password : pass1,
                 email : email,
                 age : age,
@@ -120,12 +140,12 @@
 
                 if(data.email_valid == false)
                 {
-                    flash.css('display', 'block');
+                    flash_message.css('display', 'block');
                     flash_message.html('Please Provide a valid email address');
                 }
                 else if(data.email_available == false)
                 {
-                    flash.css('display', 'block');
+                    flash_message.css('display', 'block');
                     flash_message.html('This email address already exists with us. Please provide a different one');
                 }
                 else
