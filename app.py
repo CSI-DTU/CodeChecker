@@ -179,6 +179,8 @@ def problem_page(problem_id):
             result = check_code(problem, code)
 
             update_score(username, problem_id, result)
+
+    problem['descr'] = problem['descr'].replace("\n","<br />")
             
     return flask.render_template('editor.html',
                                  form = form,

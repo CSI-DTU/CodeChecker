@@ -15,7 +15,10 @@
 
     <div class="problem-area">
         <h2>{{problem.name}}</h2>
-        <p>{{problem.descr}}</p>
+        <p>{% autoescape false %}
+                {{problem.descr}}
+            {% endautoescape %}
+        </p>
     </div>
 
     <div class = "editor-area">
