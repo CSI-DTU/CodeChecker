@@ -2,19 +2,16 @@
 
  This file will need data from server. While rendering this file server must send data of the user. Server is required to send an object named user with the following fields
 
- first_name
- last_name
- email
- age
- phone_number
- score(in quiz till now)
+ username
+ score
+
   -->
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{user.first_name}} Profile</title>
+    <title>Profile</title>
     <meta name="author" content="CSI_DTU">
     <meta name="viewport" content = "width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../static/bootstrap.css">
@@ -26,17 +23,16 @@
 <div class="container">
     <div class="page-header text-center">
         <h1><span class="fa fa-anchor"></span> Profile Page</h1>
-        <a href="index.html" class="btn btn-default btn-sm" style="display: inline-block;margin-top: 10px;color:white;background:#800000;  border-radius:4px;float:right; margin-right:10px; ">Logout</a>
+        <a href="/" class="btn btn-default btn-sm" style="display: inline-block;margin-top: 10px;color:white;background:#800000;  border-radius:4px;float:right; margin-right:10px; ">Logout</a>
     </div>
     <div class="row">
         <div class="col-sm-6">
             <div class="well">
                 <h3><span class="fa fa-user"></span>Profile</h3>
 
-                Name : {{user.first_name}} + " " + {{user.last_name}}<br>
-                Email : {{user.email}}<br>
-                Age : {{user.age}}<br>
-                Score : {{user.score}}
+                username : {{user.username}}
+                score : {{user.score}}
+
             </div>
         </div>
     </div>
