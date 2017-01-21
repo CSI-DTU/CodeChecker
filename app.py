@@ -116,6 +116,12 @@ def check_code(problem, code):
 
 #------------------------------------------------------------------------------#
 
+@app.route('/scoreboard')
+def scoreboard():
+    scoreboard = fetch_scoreboard()
+    
+
+
 @app.route('/start_contest')
 def start_contest():
     username = flask_login.current_user.id
@@ -127,7 +133,7 @@ def start_contest():
     time = datetime.now()
     with open("contest_clock.txt",'w') as f:
         f.write(str(time))
-    create_scoreboard()
+    initialize_scoreboard()
     return "Contest clock set at %s"%(str(time))
 
 
@@ -152,8 +158,7 @@ def problem_page(problem_id):
             code = flask.request.form['source_code']
             result = check_code(problem, code)
 
-            if result == "Pass":
-                update_score(username, problem_id)
+            update_score(username, problem_id, result)
             
     return flask.render_template('editor.html',
                                  form = form,
