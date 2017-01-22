@@ -2,16 +2,48 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="author" content="CSI_DTU">
+    <meta name="author" content="CSI-DTU">
     <meta name="viewport" content = "width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../static/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../static/navbar.css">
     <script src="../static/jquery.js"></script>
     <script src="../static/bootstrap.js"></script>
-    <title>CSI-DTU </title>
+    <title>Home</title>
 </head>
 <body>
-    <div class="container-fluid">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                </button>
+                <a class="navbar-brand" disabled="disabled" href="#">CSI-DTU</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar" style="font-weight: 900 ">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    {% if valid_user %}
+                    <li>
+                        <a href="/problems">Problems</a>
+                    </li>
+                    <li><a href="/scoreboard">Score Board</a></li>
+                    {% endif %}
 
+                </ul>
+                {% if valid_user %}
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"> Welcome {{current_user.id}}!</a></li>
+                    <li><a href="/logout"><span></span> Logout </a></li>
+                </ul>
+                {% else %}
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li><a href="/login"><span></span> Login </a></li>
+                </ul>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid">
         <div class="row">
             <div class="col-sm-2"></div>
             <div class="col-sm-8">
@@ -25,41 +57,40 @@
             </div>
             <div class="col-sm-2 text-success" style="text-align: right">
 
-                {% if valid_user %}
-
-                    Welcome {{current_user.id}}!
-                    <br>
-                    <a href="/logout" class="btn btn-default btn-sm" style="display: inline-block;margin-top: 10px;color:white;background:#800000;  border-radius:4px;float:right; margin-right:10px; ">Logout</a>
-
-                </div>
-                {% endif %}
-
             </div>
         </div>
+
         <br><br>
-        <div class="row" style="background-color: lightsalmon; color: red;">
+        <div class="row" style="background-color: lightsalmon; color: white;">
             <div class="col-sm-2"></div>
-            <div class="col-sm-8" style="text-align: center; font-size: 180%">
+            <div class="col-sm-8" style="text-align: center; font-size: 180%;">
                 Welcome to CodeChecker App!
             </div>
             <div class="col-sm-2"></div>
         </div>
-        <br><br>
+        <br>
         <div class="row">
             <div class="col-sm-2"></div>
-            <div class="col-sm-3">
-            {% if valid_user %}
-                <a class="btn btn-primary btn-block btn-lg" role="button" href="/problems">View problems</a>
-            {% else %}
-                <a class="btn btn-primary btn-block btn-lg" role="button" href="/login"> Login</a>
-            {% endif %}
+            <div class="col-sm-8" style="text-align: center">
+
+                {% if valid_user %}
+                    <a href="/start" class="btn btn-block btn-success btn-lg" style="font-weight: 900">
+
+                        Click here to start the contest.
+
+                    </a>
+                {% else %}
+                <span class="bg-danger text-muted" style="font-size: 200%; font-weight: 800; padding: 10px">
+                     Please login to participate in the contest
+                </span>
+                {% endif %}
             </div>
-            <div class="col-sm-2"></div>
-            <div class="col-sm-3">
-                <a class="btn btn-primary btn-block btn-lg" role="button" href="/scoreboard">View scoreboard</a>
+
             </div>
-            <div class="col-sm-2"></div>
-        </div>
+
+        <br><br>
+
     </div>
+
 </body>
 </html>

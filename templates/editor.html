@@ -11,30 +11,30 @@
     <script src="../static/bootstrap.js"></script>
 </head>
 <body>
-<div class="container-fluid">
-    <div class="row">
+<div class="container-fluid" style="margin: 0px; padding: 0px">
+    <div class="row" style="border-bottom: 3px solid blue; border-left: 3px solid blue; padding: 0px; margin: 0px; border-right: 3px solid blue;">
         <div class="col-sm-2"></div>
         <div class="col-sm-8">
             <h1 style="text-align: center; color: blue; font-family: cursive; font-size: 400%; font-weight: 900 ">
-                Computer Society of India
-                <br>
-                <span class="text-danger" style="text-decoration: underline;">  Code Genesis </span>
-                <br>
-                <span class="text-info" style="font-size: 70%"> Problem Code : {{problem.name}}</span>
+
+                <span class="text-info" style="font-size: 70%;"> Problem: {{problem.name}}</span>
             </h1>
 
         </div>
         <div class="col-sm-2"></div>
     </div>
-    <div class="row">
+    <div class="row" style="padding: 5px; margin: 5px;">
         <div class="col-sm-1"></div>
         <div class="col-sm-10 text-justify">
-            <div class="problem-area text-danger">
-                <h3>{% autoescape false %}
+            <div class="problem-area" style="border: 3px solid lightsalmon; padding: 5px;
+ margin: 5px">
+                <p>{% autoescape false %}
                     {{problem.descr}}
                     {% endautoescape %}
-                </h3>
+                </p>
             </div>
+            <br>
+            <br>
             <div class = "editor-area">
                 <form  action="" method="post" role="form">
                     <div class = "editor" >

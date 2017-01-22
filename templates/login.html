@@ -6,10 +6,29 @@
     <meta name="viewport" content = "width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" type="text/css" href="../static/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../static/navbar.css">
     <script src="../static/jquery.js"></script>
     <script src="../static/bootstrap.js"></script>
 </head>
-<body>
+<body><nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            </button>
+            <a class="navbar-brand" disabled="disabled" href="#">CSI-DTU</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar" style="font-weight: 900 ">
+            <ul class="nav navbar-nav">
+                <li><a href="/">Home</a></li>
+
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="#"><span></span> Login </a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-2"></div>
@@ -25,13 +44,13 @@
             </div>
             <div class="col-sm-2"></div>
         </div>
-        <br>
+
 
         <div class="row" id="flash">
             <br><br>
             <div class="col-sm-2"></div>
-            <div class="col-sm-8" id="flash-message">
-            <center>{{error}}</center>
+            <div class="col-sm-8" id="flash-message" style="text-align: center">
+                    {{error}}
             </div>
             <div class="col-sm-2"></div>
         </div>
