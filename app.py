@@ -132,7 +132,7 @@ def show_problems():
 def scoreboard():
     problems = fetch_all_problems()
     headers = ["Rank", "Name", "Score"]
-    headers.extend([p.values()[1] for p in problems])
+    headers.extend([p['name'] for p in problems])
 
     scoreboard = fetch_scoreboard()
     return flask.render_template('scoreboard.html', headers = headers, scoreboard = scoreboard)

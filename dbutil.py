@@ -87,8 +87,8 @@ def fetch_all_problems():
     for col in data:
         problems.append({'id':col[0], 'name':col[1]})
     return problems
-    
 
+    
 def fetch_valid_users():
     c.execute("SELECT name, password FROM users")
     data = c.fetchall()
