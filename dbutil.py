@@ -29,12 +29,11 @@ def fetch_scoreboard():
         # wrong subs
         WAs = sum(status[6])
         # net time 
-        intervals = [datetime.strptime(t ,"%Y-%m-%d %H:%M:%S.%f") - ctime for t in status[5] if t != None]
+        intervals = [ctime - datetime.strptime(t ,"%Y-%m-%d %H:%M:%S.%f") for t in status[5] if t != None]
         net_time = sum(intervals,timedelta()) + timedelta(minutes=5*WAs)
         # solved problems
         row = [username, score, net_time]
         row.extend(status[4])
-        print status[4]
         rows.append(row)
         
         
@@ -42,7 +41,6 @@ def fetch_scoreboard():
     rows.sort(key = operator.itemgetter(1,2), reverse = True)
 
     rows = [[(i+1)] + rows[i][:2] + rows[i][3:] for i in range(len(rows))]
-    print rows
     return rows
    
 #fetch_scoreboard()    
