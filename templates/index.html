@@ -11,9 +11,7 @@
 </head>
 <body>
     <div class="container-fluid">
-        {% if valid_user %}
-        <div>Welcome {{current_user.id}}!</div>
-        {% endif %}
+
         <div class="row">
             <div class="col-sm-2"></div>
             <div class="col-sm-8">
@@ -25,35 +23,42 @@
                     <span class="text-danger" style="text-decoration: underline;">  Code Genesis </span>
                 </h1>
             </div>
-            <div class="col-sm-2"></div>
+            <div class="col-sm-2 text-success" style="text-align: right">
+
+                {% if valid_user %}
+
+                    Welcome {{current_user.id}}!
+                    <br>
+                    <a href="/logout" class="btn btn-default btn-sm" style="display: inline-block;margin-top: 10px;color:white;background:#800000;  border-radius:4px;float:right; margin-right:10px; ">Logout</a>
+
+                </div>
+                {% endif %}
+
+            </div>
         </div>
         <br><br>
         <div class="row" style="background-color: lightsalmon; color: red;">
             <div class="col-sm-2"></div>
             <div class="col-sm-8" style="text-align: center; font-size: 180%">
-
-
                 Welcome to CodeChecker App!
-
             </div>
             <div class="col-sm-2"></div>
-
-
         </div>
         <br><br>
         <div class="row">
-            
-            <div class="col-sm-4 col-md-offset-4">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-3">
             {% if valid_user %}
                 <a class="btn btn-primary btn-block btn-lg" role="button" href="/problems">View problems</a>
             {% else %}
                 <a class="btn btn-primary btn-block btn-lg" role="button" href="/login"> Login</a>
             {% endif %}
             </div>
-            
-            <div class="col-sm-4 col-md-offset-4">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-3">
                 <a class="btn btn-primary btn-block btn-lg" role="button" href="/scoreboard">View scoreboard</a>
             </div>
+            <div class="col-sm-2"></div>
         </div>
     </div>
 </body>

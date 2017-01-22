@@ -1,19 +1,53 @@
-<html>
-	<body>
-		 <table width = 50%>
-		 	<tr>
-    			<th>Problem ID</th>
-    			<th>Title</th>
-    			<th>Link</th>
-  			</tr>
-  			
-  			{% for problem in problems %}
-  			<tr>
-    			<td>{{problem.id}}</td>
-    			<td>{{problem.name}}</td>
-    			<td><a href = "/problem/{{problem.id}}">Solve</a></td>
-  			</tr>
-     		{% endfor %}
-		</table> 
-	</body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Problems</title>
+	<meta name="author" content="CSI-DTU">
+	<meta name="viewport" content = "width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="../static/bootstrap.css">
+	<script src="../static/jquery.js"></script>
+	<script src="../static/bootstrap.js"></script>
+</head>
+<body>
+	<div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+                <h1 style="text-align: center; color: blue; font-family: cursive; font-size: 400%; font-weight: 900 ">
+                    Computer Society of India
+                    <br>
+                    <span class="text-danger" style="text-decoration: underline;">  Code Genesis </span>
+                    <br><br>
+                    <span class="text-info">List of Problems</span>
+                </h1>
+
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
+        <br><br>
+        <div class="row">
+            <div class="col-sm-1">
+            </div>
+            <div class="col-sm-10 table-responsive">
+                <table class="table table-bordered table-hover">
+                    <tr class="bg-info">
+                        <th>Problem ID</th>
+                        <th>Title</th>
+                        <th>Link</th>
+                    </tr>
+                    {% for problem in problems %}
+                    <tr class="text-success">
+                        <td>{{problem.id}}</td>
+                        <td>{{problem.name}}</td>
+                        <td><a href = "/problem/{{problem.id}}" class="text-danger">Solve</a></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <div class="col-sm-1">
+            </div>
+        </div>
+    </div>
+</body>
 </html>		
