@@ -4,93 +4,83 @@
     <meta charset="UTF-8">
     <meta name="author" content="CSI-DTU">
     <meta name="viewport" content = "width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../static/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="../static/navbar.css">
+    <link rel="stylesheet" type="text/css" href="../static/materialize/css/materialize.css">
     <script src="../static/jquery.js"></script>
-    <script src="../static/bootstrap.js"></script>
-    <title>Home</title>
+    <script src="../static/materialize/js/materialize.js"></script>
+    <title>Home CSI-DTU</title>
 </head>
 <body>
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                </button>
-                <a class="navbar-brand" disabled="disabled" href="#">CSI-DTU</a>
-            </div>
-            <div class="collapse navbar-collapse" id="myNavbar" style="font-weight: 900 ">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    {% if valid_user %}
-                    <li>
-                        <a href="/problems">Problems</a>
-                    </li>
-                    <li><a href="/scoreboard">Score Board</a></li>
-                    {% endif %}
 
-                </ul>
-                {% if valid_user %}
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"> Welcome {{current_user.id}}!</a></li>
-                    <li><a href="/logout"><span></span> Logout </a></li>
-                </ul>
-                {% else %}
-                <ul class="nav navbar-nav navbar-right">
+<nav>
+    <div class="nav-wrapper">
+        <a href="#" class="brand-logo center">CSI-DTU</a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class=" left hide-on-med-and-down">
+            <li class="active"><a href="#">Home</a></li>
+            {% if valid_user %}
+            <li>
+                <a href="/problems">Problems</a>            </li>
+              <li><a href="/scoreboard">Score Board</a></li>
+        </ul>
+            <ul class="right hide-on-med-and-down">
 
-                    <li><a href="/login"><span></span> Login </a></li>
-                </ul>
-                {% endif %}
-            </div>
-        </div>
-    </nav>
-    <div class="container-fluid">
+             <li><a href="#"> Welcome {{current_user.id}}!</a></li>
+             <li><a href="/logout"><span></span> Logout </a></li>
+            </ul>
+            {% else %}
+    </ul>
+        <ul class="right hide-on-med-and-down">
+             <li><a href="/login"><span></span> Login </a></li>
+        </ul>
+
+        {% endif %}
+
+
+        <ul class="side-nav" id="mobile-demo">
+
+            <li class="active"><a href="/">Home</a></li>
+            {% if valid_user %}
+            <li>
+                <a href="/problems">Problems</a>
+            </li>
+            <li><a href="/scoreboard">Score Board</a></li>
+            <li><a href="#"> Welcome {{current_user.id}}!</a></li>
+            <li><a href="/logout"><span></span> Logout </a></li>
+            {% else %}
+
+            <li><a href="/login"><span></span> Login </a></li>
+
+            {% endif %}
+        </ul>
+    </div>
+</nav>
+
+
+    <div class="container">
         <div class="row">
-            <div class="col-sm-2"></div>
-            <div class="col-sm-8">
-                <h1 style="text-align: center; color: blue; font-family: cursive; font-size: 400%; font-weight: 900 ">
+            <div class="col s12 m2 l2"></div>
+            <div class="col s12 m8 l8" style="text-align: center">
+                <h1 style="text-align: center;  font-size: 400%; font-weight: 900 " class="red-text text-darken-2">
                     Computer Society of India
-                    <br>
-                    DTU Chapter <br> <span style="color: orange; font-weight: 400"> <i> presents </i> </span>
-                    <br>
-                    <span class="text-danger" style="text-decoration: underline;">  Code Genesis </span>
+
                 </h1>
+                <span  style=" font-weight: 700; font-family: cursive; font-size : 300%" class="red-text text-lighten-3" >  Code Genesis </span>
+                <br>
             </div>
-            <div class="col-sm-2 text-success" style="text-align: right">
-
-            </div>
+            <div class="col s12 m2 l2"></div>
         </div>
-
-        <br><br>
-        <div class="row" style="background-color: lightsalmon; color: white;">
-            <div class="col-sm-2"></div>
-            <div class="col-sm-8" style="text-align: center; font-size: 180%;">
-                Welcome to CodeChecker App!
-            </div>
-            <div class="col-sm-2"></div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-sm-2"></div>
-            <div class="col-sm-8" style="text-align: center">
-
-                {% if valid_user %}
-                    <a href="/start" class="btn btn-block btn-success btn-lg" style="font-weight: 900">
-
-                        Click here to start the contest.
-
-                    </a>
-                {% else %}
-                <span class="bg-danger text-muted" style="font-size: 200%; font-weight: 800; padding: 10px">
-                     Please login to participate in the contest
-                </span>
-                {% endif %}
-            </div>
-
-            </div>
-
-        <br><br>
-
     </div>
 
+
+
+<script>
+
+    $(function () {
+
+        $(".button-collapse").sideNav();
+
+    });
+
+</script>
 </body>
 </html>
