@@ -37,6 +37,15 @@
             <br>
             <div class = "editor-area">
                 <form  action="" method="post" role="form">
+                	<div class = "language" style = "width: 25%">
+                		<label>Language</label>
+                        <select id = "lang" class = "form-control" name = "lang">
+                        	<option value = "c">C</option>
+                        	<option value = "cpp">C++</option>
+                        	<option value = "java">Java</option>
+                        	<option value = "python">Python</option>
+                        </select>	
+                	</div>
                     <div class = "editor" >
                         {{ form.source_code }}
                     </div>

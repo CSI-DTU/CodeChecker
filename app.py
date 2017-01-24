@@ -98,13 +98,13 @@ def unauthorized_handler():
 #------------------------------------------------------------------------------#
 
 # Code checker
-def check_code(problem, code):
+def check_code(problem, code, lang):
     code = code.lstrip()
     if code == None or code == "":
         return "Fail"
     
     testcase = problem['input']
-    output = compiler.run({'lang':'python',
+    output = compiler.run({'lang':lang,
                            'testcases':[testcase],
                            'source':code}).output[0]
 
@@ -176,7 +176,8 @@ def problem_page(problem_id):
     if flask.request.method == "POST":
         if form.validate():
             code = flask.request.form['source_code']
-            result = check_code(problem, code)
+            lang = flask.request.form['lang']
+            result = check_code(problem, code, lang)
 
             update_score(username, problem_id, result)
 
