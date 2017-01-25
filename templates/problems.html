@@ -5,73 +5,87 @@
 	<title>Problems</title>
 	<meta name="author" content="CSI-DTU">
 	<meta name="viewport" content = "width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="../static/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="../static/navbar.css">
-	<script src="../static/jquery.js"></script>
-	<script src="../static/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="../static/materialize/css/materialize.css">
+    <script src="../static/jquery.js"></script>
+    <script src="../static/materialize/js/materialize.js"></script>
 </head>
 <body>
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-            </button>
-            <a class="navbar-brand" disabled="disabled" href="#">CSI-DTU</a>
-        </div>
-        <div class="collapse navbar-collapse" id="myNavbar" style="font-weight: 900 ">
-            <ul class="nav navbar-nav">
-                <li><a href="/">Home</a></li>
-                <li class="active">
-                    <a href="/#">Problems</a>
-                </li>
-                <li><a href="/scoreboard">Score Board</a></li>
+<nav>
+    <div class="nav-wrapper blue">
+        <a href="#" class="brand-logo center">CSI-DTU</a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class=" left hide-on-med-and-down">
+            <li><a href="/">Home</a></li>
+            <li class="active">
+                <a href="#">Problems</a>            </li>
+            <li><a href="/scoreboard">Score Board</a></li>
+        </ul>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="#"> Welcome {{current_user.id}}!</a></li>
+            <li><a href="/logout"><span></span> Logout </a></li>
+        </ul>
+        <ul class="side-nav" id="mobile-demo">
+            <li><a href="/">Home</a></li>
 
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"> Welcome {{current_user.id}}!</a></li>
-                <li><a href="/logout"><span></span> Logout </a></li>
-            </ul>
-        </div>
+            <li class="active">
+                <a href="#">Problems</a>            </li>
+            <li><a href="/scoreboard">Score Board</a></li>
+
+            <li><a href="#"> Welcome {{current_user.id}}!</a></li>
+            <li><a href="/logout"><span></span> Logout </a></li>
+
+        </ul>
     </div>
 </nav>
-	<div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-2"></div>
-            <div class="col-sm-8">
-                <h1 style="text-align: center; color: blue; font-family: cursive; font-size: 400%; font-weight: 900 ">
-                    Computer Society of India
-                    <br>
-                    <span class="text-danger" style="text-decoration: underline;">  Code Genesis </span>
-                    <br><br>
-                    <span class="text-info">List of Problems</span>
-                </h1>
 
-            </div>
-            <div class="col-sm-2"></div>
-        </div>
-        <br><br>
+	<div class="container">
         <div class="row">
-            <div class="col-sm-1">
+            <div class="col s12 m2 l2"></div>
+            <div class="col s12 m8 l8" style="text-align: center">
+                <h1 style="text-align: center;  font-size: 400%; font-weight: 900 " class="blue-text text-darken-4">
+                    Computer Society of India
+
+                </h1>
+                <span  style=" font-weight: 700; font-family: cursive; font-size : 300%" class="blue-text text-lighten-3" >  Code Genesis </span>
+                <br>
             </div>
-            <div class="col-sm-10 table-responsive">
-                <table class="table table-bordered table-hover">
-                    <tr class="bg-info">
+            <div class="col s12 m2 l2"></div>
+        </div>
+
+        <br>
+        <div class="row">
+            <div class="col s12 m1 l1">
+            </div>
+            <div class="col s12 m10 l10 table-responsive">
+                <table class="responsive-table  bordered blue-text striped " style="padding: 3px; margin: 3px">
+                    <tr class="center-align text-darken-4 white-text blue" style="font-weight: 700">
                         <th>Problem ID</th>
                         <th>Title</th>
                         <th>Link</th>
                     </tr>
                     {% for problem in problems %}
-                    <tr class="text-success">
+                    <tr class="center-align text-darken-4" style="font-weight: 600">
                         <td>{{problem.id}}</td>
                         <td>{{problem.name}}</td>
-                        <td><a href = "/problem/{{problem.id}}" class="text-danger">Solve</a></td>
+                        <td><a href = "/problem/{{problem.id}}" class="blue-text text-darken-4">Solve</a></td>
                     </tr>
                     {% endfor %}
                 </table>
             </div>
-            <div class="col-sm-1">
+            <div class="col m1 s12 l1">
             </div>
         </div>
     </div>
+<script>
+    $(function () {
+
+        $(".button-collapse").sideNav();
+
+    });
+</script>
 </body>
+<style>
+
+
+</style>
 </html>		
