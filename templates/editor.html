@@ -12,14 +12,7 @@
     <script src="../static/jquery.js"></script>
     <script src="../static/bootstrap.js"></script>
 </head>
-<style>
-    
-    *
-    {
-        margin: 0px;
-    }
-    
-</style>
+
 <body>
 
 <nav class="navbar navbar-default">
@@ -56,7 +49,9 @@
             </h1>
 
         </div>
-        <div class="col-sm-4" style="border-left: 3px solid darkblue"></div>
+        <div class="col-sm-4">
+            <h1 style="color: darkblue" > List of Problems  </h1>
+        </div>
     </div>
     <div class="row" style="padding: 0px; margin: 0px;">
 
@@ -69,13 +64,17 @@
                 </p>
             </div>
         </div>
-        <div class="col-sm-4" style="border-left: 3px solid darkblue"></div>
+        <div class="col-sm-4" style="margin: 0px">
+
+
+
+        </div>
     </div>
     <div class="row" style="margin: 0px; padding: 3px">
             <div class = "editor-area col-sm-8" style="border: 3px solid darkblue; padding: 0px; margin: 0px; border-left: none; border-top: none">
                 <form  action="" method="post" role="form">
-                    <div class = "language" style = "width: 25%">
-                        <label>Language</label>
+                    <div class = "language form-group" style = "width: 25%">
+                        <label for="lang">Language</label>
                         <select id = "lang" class = "form-control" name = "lang">
                             <option value = "c">C</option>
                             <option value = "cpp">C++</option>
@@ -84,18 +83,18 @@
                         </select>
                     </div>
                     <br>
-                    <div style="border : 3px solid darkblue; border-left: none; border-right : none">
+                    <div style="border : 3px solid darkblue; border-left: none; border-right : none; margin : 4px">
                     <div class = "editor">
                         {{ form.source_code }}
                     </div>
                     </div>
                     <br>
                     <input type="submit" class="btn btn-info" value="SUBMIT">
-                    <br>
+                    <p></p>
                 </form>
 
             </div>
-        <div class="col-sm-1"></div>
+        <div class="col-sm-4" style="border-left: 3px solid darkblue" </div>
     </div>
 
           <div class="row" style="margin : 3px; padding: 3px">
