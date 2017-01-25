@@ -9,9 +9,8 @@
     <script src="../static/jquery.js"></script>
     <script src="../static/materialize/js/materialize.js"></script>
 <body>
-
 <nav>
-    <div class="nav-wrapper">
+    <div class="nav-wrapper blue">
         <a href="#" class="brand-logo center">CSI-DTU</a>
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul class=" left hide-on-med-and-down">
@@ -32,10 +31,8 @@
             <li class="active">
                 <a href="/problems">Problems</a>            </li>
             <li class="active"><a href="#">Score Board</a></li>
-
             <li><a href="#"> Welcome {{current_user.id}}!</a></li>
             <li><a href="/logout"><span></span> Logout </a></li>
-
         </ul>
     </div>
 </nav>
@@ -43,11 +40,10 @@
         <div class="row">
             <div class="col s12 m2 l2"></div>
             <div class="col s12 m8 l8" style="text-align: center">
-                <h1 style="text-align: center;  font-size: 400%; font-weight: 900 " class="red-text text-darken-2">
+                <h1 style="text-align: center;  font-size: 400%; font-weight: 900 " class="blue-text text-darken-4">
                     Computer Society of India
-
                 </h1>
-                <span  style=" font-weight: 700; font-family: cursive; font-size : 300%" class="red-text text-lighten-3" >  Code Genesis </span>
+                <span  style=" font-weight: 700; font-family: cursive; font-size : 300%" class="blue-text text-lighten-3" >  Code Genesis </span>
                 <br>
             </div>
             <div class="col s12 m2 l2"></div>
@@ -55,15 +51,14 @@
         <div class="row">
             <div class="col s12 m1 l1"></div>
             <div class="col s12 m10 l10 table-responsive">
-                <table class="responsive-table centered highlight bordered">
-                    <tr>
+                <table class="responsive-table  bordered blue-text striped " style=" padding: 3px; margin: 3px">
+                    <tr class="center-align text-darken-4 blue white-text" style="font-weight: 700">
                         {% for header in headers %}
                         <th>{{header}}</th>
                         {% endfor %}
                     </tr>
-
                     {% for row in scoreboard %}
-                    <tr class="text-warning">
+                    <tr class="center-align text-darken-4" style="font-weight: 600">
                         {% for col in row %}
                         <td>{{col}}</td>
                         {% endfor %}
@@ -81,5 +76,14 @@
         </div>
 
     </div>
+<script>
+
+    $(function () {
+
+        $(".button-collapse").sideNav();
+
+    });
+
+</script>
 </body>
 </html>		
