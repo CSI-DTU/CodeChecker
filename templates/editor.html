@@ -15,7 +15,7 @@
 
 <body>
 
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default" style="margin: 0px">
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -42,7 +42,7 @@
 <div class="container-fluid" style="margin: 0px; padding: 0px">
     <div class="row" style="  padding: 0px; margin: 0px;">
 
-        <div class="col-sm-8" style="border-bottom: 3px solid darkblue; border-right: 3px solid darkblue; ">
+        <div class="col-sm-8" style="border-bottom: 1px solid black; border-right: 1px solid black; ">
             <h1 style="text-align: left; color: darkblue; font-family: Arial; font-size: 400%; font-weight: 900 ">
 
                  {{problem.name}}
@@ -55,7 +55,7 @@
     </div>
     <div class="row" style="padding: 0px; margin: 0px;">
 
-        <div class="col-sm-8 text-justify"  style="border-bottom: 3px solid darkblue; border-right: 3px solid darkblue">
+        <div class="col-sm-8 text-justify"  style="border-bottom: 1px solid black; border-right: 1px solid black">
             <div class="problem-area" style="color: darkblue; padding: 5px;
  margin: 0px;">
                 <p>{% autoescape false %}
@@ -65,36 +65,32 @@
             </div>
         </div>
         <div class="col-sm-4" style="margin: 0px">
-
-
-
         </div>
     </div>
-    <div class="row" style="margin: 0px; padding: 3px">
-            <div class = "editor-area col-sm-8" style="border: 3px solid darkblue; padding: 0px; margin: 0px; border-left: none; border-top: none">
+    <div class="row" style="margin: 0px; padding: 0px">
+            <div class = "editor-area col-sm-8" style="border: 1px solid black; padding: 0px; margin: 0px;  border-top: none; ">
                 <form  action="" method="post" role="form">
-                    <div class = "language form-group" style = "width: 25%">
-                        <label for="lang">Language</label>
-                        <select id = "lang" class = "form-control" name = "lang">
+                    <div class = "language form-group" style="display: inline-flex; width : 25%; margin: 1px; margin-left: 73.5%">
+
+                        <select id = "lang" class = "form-control" name = "lang" style="margin: 0px">
                             <option value = "c">C</option>
                             <option value = "cpp">C++</option>
                             <option value = "java">Java</option>
                             <option value = "python">Python</option>
                         </select>
                     </div>
-                    <br>
-                    <div style="border : 3px solid darkblue; border-left: none; border-right : none; margin : 4px">
+                    <div style="border : 1px solid black; border-left: none; border-right : none; margin : 4px">
                     <div class = "editor">
                         {{ form.source_code }}
                     </div>
                     </div>
-                    <br>
-                    <input type="submit" class="btn btn-info" value="SUBMIT">
+                    &nbsp;&nbsp;
+                    <input type="submit" class="btn btn-success" value="SUBMIT">
                     <p></p>
                 </form>
 
             </div>
-        <div class="col-sm-4" style="border-left: 3px solid darkblue" </div>
+        <div class="col-sm-4" style="border-left: 1px solid black"> </div>
     </div>
 
           <div class="row" style="margin : 3px; padding: 3px">
