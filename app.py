@@ -104,16 +104,20 @@ def check_code(problem, code, lang):
         return "Fail"
     
     testcase = problem['input']
-    output = compiler.run({'lang':lang,
-                           'testcases':[testcase],
-                           'source':code}).output[0]
 
-    if output[-1] == '\n':
-        output = output[:-1]
-    
-    if output == problem['output']:
-        return "Pass"
-    else:
+    try:
+        output = compiler.run({'lang':lang,
+                               'testcases':[testcase],
+                               'source':code}).output[0]
+
+        if output[-1] == '\n':
+            output = output[:-1]
+        
+        if output == problem['output']:
+            return "Pass"
+        else:
+            return "Fail"
+    except:
         return "Fail"
 
 
