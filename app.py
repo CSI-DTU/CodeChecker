@@ -8,8 +8,8 @@ from flask.ext.codemirror import CodeMirror
 from hackerrank.HackerRankAPI import HackerRankAPI
 from datetime import datetime
 
-CODEMIRROR_LANGUAGES = ['python', 'html']
-CODEMIRROR_THEME = 'base16-light'
+CODEMIRROR_LANGUAGES = ['python', 'html', 'cpp', 'c', 'java']
+CODEMIRROR_THEME = 'default'
 
 compiler = HackerRankAPI(api_key = 'hackerrank|751319-994|d057e21968795c38201ca37d376201eff936f29b')
 
