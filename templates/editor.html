@@ -6,91 +6,93 @@
     <meta charset="UTF-8">
     <meta name="author" content="CSI_DTU">
     <meta name="viewport" content = "width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" type="text/css" href="../static/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="../static/navbar.css">
+    <link rel="stylesheet" type="text/css" href="../static/materialize/css/materialize.css">
     <script src="../static/jquery.js"></script>
-    <script src="../static/bootstrap.js"></script>
+    <script src="../static/materialize/js/materialize.js"></script>
 </head>
-
 <body>
+<nav>
+    <div class="nav-wrapper blue">
+        <a href="#" class="brand-logo center">CSI-DTU</a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class=" left hide-on-med-and-down">
+            <li><a href="/">Home</a></li>
+            <li>
+                <a href="/problems">Problems</a>            </li>
+            <li><a href="/scoreboard">Score Board</a></li>
+        </ul>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="#"> Welcome {{current_user.id}}!</a></li>
+            <li><a href="/logout"><span></span> Logout </a></li>
+        </ul>
+        <ul class="side-nav" id="mobile-demo">
+            <li><a href="/">Home</a></li>
 
-<nav class="navbar navbar-default" style="margin: 0px">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-            </button>
-            <a class="navbar-brand" disabled="disabled" href="#">CSI-DTU</a>
-        </div>
-        <div class="collapse navbar-collapse" id="myNavbar" style="font-weight: 900 ">
-            <ul class="nav navbar-nav">
-                <li><a href="/">Home</a></li>
-                <li>
-                    <a href="/problems">Problems</a>
-                </li>
-                <li><a href="/scoreboard">Score Board</a></li>
+            <li>
+                <a href="/problems">Problems</a>            </li>
+            <li><a href="/scoreboard">Score Board</a></li>
+            <li><a href="/logout"><span></span> Logout </a></li>
 
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"> Welcome {{current_user.id}}!</a></li>
-                <li><a href="/logout"><span></span> Logout </a></li>
-            </ul>
-        </div>
+        </ul>
     </div>
 </nav>
+<div class="container" style="width: 100%">
+    <div class="row">
+        <div class="col m8 l8" style="padding: 2px">
+            <h1 style="text-align: left; color: darkblue; font-family: Arial; font-weight: 900; ">
 
-<div class="container-fluid" style="margin: 0px; padding: 0px">
-    <div class="row" style="  padding: 0px; margin: 0px;">
-
-        <div class="col-sm-8" style="border-bottom: 1px solid black; border-right: 1px solid black; ">
-            <h1 style="text-align: left; color: darkblue; font-family: Arial; font-size: 400%; font-weight: 900 ">
-
-                 {{problem.name}}
+                &nbsp; {{problem.name}}
             </h1>
-
         </div>
-        <div class="col-sm-4">
-            <h1 style="color: darkblue" > List of Problems  </h1>
+        <div class="col m4 l4">
+            <h3 style="color: darkblue" class="center-align" >All Problems</h3>
         </div>
     </div>
+
     <div class="row" style="padding: 0px; margin: 0px;">
 
-        <div class="col-sm-8 text-justify"  style="border-bottom: 1px solid black; border-right: 1px solid black">
-            <div class="problem-area" style="color: darkblue; padding: 5px;
- margin: 0px;">
+        <div class="col m8 l8 text-justify">
+            <div class="problem-area" style="color: saddlebrown; padding: 0px;
+ margin: 0px; background-color: white">
                 <p>{% autoescape false %}
                     {{problem.descr}}
                     {% endautoescape %}
                 </p>
             </div>
         </div>
-        <div class="col-sm-4" style="margin: 0px">
+        <div class="col m4 l4" style="margin: 0px">
         </div>
     </div>
     <div class="row" style="margin: 0px; padding: 0px">
-            <div class = "editor-area col-sm-8" style="border: 1px solid black; padding: 0px; margin: 0px;  border-top: none; ">
+            <div class = "editor-area col  m8 l8" style="background-color: lightgray; border: 1px solid black; ">
                 <form  action="" method="post" role="form">
-                    <div class = "language form-group" style="display: inline-flex; width : 25%; margin: 1px; margin-left: 73.5%">
-
-                        <select id = "lang" class = "form-control" name = "lang" style="margin: 0px">
+                    <div class = "language input-field" style="width: 25%; margin: 0px;  margin-left: 73.5%">
+                        <select id = "lang" name = "lang" style="margin: 0px">
+                            <option value="" disabled selected>Choose your language</option>
                             <option value = "c">C</option>
                             <option value = "cpp">C++</option>
                             <option value = "java">Java</option>
                             <option value = "python">Python</option>
                         </select>
+
                     </div>
-                    <div style="border : 1px solid black; border-left: none; border-right : none; margin : 4px">
+                    <div style="border : 1px solid black;margin : 4px">
                     <div class = "editor">
                         {{ form.source_code }}
                     </div>
                     </div>
-                    &nbsp;&nbsp;
-                    <input type="submit" class="btn btn-success" value="SUBMIT">
+                    <div class="row">
+                        <div class="col m10 l10"></div>
+                        <div class="col  m2 l2">
+                            <input type="submit" class="btn btn-success" value="SUBMIT">
+                        </div>
+                    </div>
+
                     <p></p>
                 </form>
 
             </div>
-        <div class="col-sm-4" style="border-left: 1px solid black"> </div>
+        <div class="col m4 l4" style="border-left: 1px solid black"> </div>
     </div>
 
           <div class="row" style="margin : 3px; padding: 3px">
@@ -103,5 +105,39 @@
 
         </div>
 </div>
+<script>
+
+    $(document).ready(function() {
+        $('select').material_select();
+
+        $('.select-dropdown').css({'margin' : '0px'});
+
+    });
+
+</script>
 </body>
+
+<style>
+
+    .row
+    {
+        width: 100%;
+        margin: 2px;
+    }
+
+    .container
+    {
+        padding: 2px;
+    }
+
+    h1
+    {
+        margin: 2px;
+    }
+
+
+
+
+</style>
+
 </html>
