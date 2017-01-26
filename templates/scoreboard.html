@@ -15,21 +15,20 @@
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul class=" left hide-on-med-and-down">
             <li><a href="/">Home</a></li>
-
             <li>
-                <a href="/problems">Problems</a>            </li>
+                <a href="/problems">Problems</a>
+            </li>
             <li class="active"><a href="#">Score Board</a></li>
         </ul>
         <ul class="right hide-on-med-and-down">
-
             <li><a href="#"> Welcome {{current_user.id}}!</a></li>
             <li><a href="/logout"><span></span> Logout </a></li>
         </ul>
         <ul class="side-nav" id="mobile-demo">
             <li><a href="/">Home</a></li>
-
             <li>
-                <a href="/problems">Problems</a>            </li>
+                <a href="/problems">Problems</a>
+            </li>
             <li class="active"><a href="#">Score Board</a></li>
             <li><a href="/logout"><span></span> Logout </a></li>
         </ul>
@@ -63,20 +62,30 @@
                     </tr>
                     {% endfor %}
                 </table>
-
-
             </div>
         </div>
-
     </div>
 <script>
-
     $(function () {
 
         $(".button-collapse").sideNav();
 
     });
-
 </script>
 </body>
+<style>
+    .row
+    {
+        width: 100%;
+        margin: 5px;
+        padding: 5px;
+    }
+    .container
+    {
+        margin: 5px;
+        padding: 5px;
+        width: 100%;
+    }
+
+</style>
 </html>		

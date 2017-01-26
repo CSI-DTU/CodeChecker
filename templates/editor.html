@@ -27,12 +27,11 @@
         </ul>
         <ul class="side-nav" id="mobile-demo">
             <li><a href="/">Home</a></li>
-
             <li>
-                <a href="/problems">Problems</a>            </li>
+                <a href="/problems">Problems</a>
+            </li>
             <li><a href="/scoreboard">Score Board</a></li>
             <li><a href="/logout"><span></span> Logout </a></li>
-
         </ul>
     </div>
 </nav>
@@ -40,7 +39,6 @@
     <div class="row">
         <div class="col m8 l8" style="padding: 2px">
             <h1 style="text-align: left; color: darkblue; font-family: Arial; font-weight: 900; ">
-
                 &nbsp; {{problem.name}}
             </h1>
         </div>
@@ -50,7 +48,6 @@
     </div>
 
     <div class="row" style="padding: 0px; margin: 0px;">
-
         <div class="col m8 l8 text-justify">
             <div class="problem-area" style="color: saddlebrown; padding: 0px;
  margin: 0px; background-color: white">
@@ -94,7 +91,6 @@
             </div>
         <div class="col m4 l4" style="border-left: 1px solid black"> </div>
     </div>
-
           <div class="row" style="margin : 3px; padding: 3px">
             {% if result != None %}
             <div class = "result-area" >
@@ -102,21 +98,16 @@
                 <p> {{result}} </p>
             </div>
             {% endif %}
-
         </div>
 </div>
 <script>
-
     $(document).ready(function() {
         $('select').material_select();
-
         $('.select-dropdown').css({'margin' : '0px'});
-
+        $(".button-collapse").sideNav();
     });
-
 </script>
 </body>
-
 <style>
 
     .row
@@ -134,10 +125,5 @@
     {
         margin: 2px;
     }
-
-
-
-
 </style>
-
 </html>
