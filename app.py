@@ -173,6 +173,7 @@ def home_page():
 @flask_login.login_required
 def problem_page(problem_id):
     username = flask_login.current_user.id
+    problems = fetch_all_problems()
     problem = fetch_problem(problem_id)
     problem['descr'] = problem['descr'].replace("\n","<br />")
     form = CodeForm(flask.request.form)
@@ -191,6 +192,7 @@ def problem_page(problem_id):
        
     return flask.render_template('editor.html',
                                  form = form,
+                                 problems = problems,
                                  problem = problem,
                                  result= result)
 

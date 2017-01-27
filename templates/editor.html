@@ -44,6 +44,14 @@
         </div>
         <div class="col m4 l4">
             <h3 style="color: darkblue" class="center-align" >All Problems</h3>
+            <table>
+            	<tbody>
+	            	{% for p in problems %}
+	            	<tr><td><a href = "/problem/{{p.id}}">{{p.name}}</a></td>
+	            	</tr>
+            		{% endfor %}
+            	</tbody>
+            </table>
         </div>
     </div>
 
