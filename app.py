@@ -174,6 +174,7 @@ def home_page():
 def problem_page(problem_id):
     username = flask_login.current_user.id
     problem = fetch_problem(problem_id)
+    problem['descr'] = problem['descr'].replace("\n","<br />")
     form = CodeForm(flask.request.form)
     result = None
 
@@ -181,12 +182,13 @@ def problem_page(problem_id):
         if form.validate():
             code = flask.request.form['source_code']
             lang = flask.request.form['lang']
-            result = check_code(problem, code, lang)
 
-            update_score(username, problem_id, result)
-
-    problem['descr'] = problem['descr'].replace("\n","<br />")
-            
+            if lang == 'none':
+                result = "Please select a language!"
+            else:
+                result = check_code(problem, code, lang)
+                update_score(username, problem_id, result)
+       
     return flask.render_template('editor.html',
                                  form = form,
                                  problem = problem,
