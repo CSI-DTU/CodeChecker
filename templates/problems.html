@@ -26,34 +26,29 @@
         </ul>
         <ul class="side-nav" id="mobile-demo">
             <li><a href="/">Home</a></li>
-
             <li class="active">
                 <a href="#">Problems</a>            </li>
             <li><a href="/scoreboard">Score Board</a></li>
             <li><a href="/logout"><span></span> Logout </a></li>
-
         </ul>
     </div>
 </nav>
-
 	<div class="container">
         <div class="row">
             <div class="col s12 m2 l2"></div>
             <div class="col s12 m8 l8" style="text-align: center">
                 <h1 style="text-align: center;  font-size: 400%; font-weight: 900 " class="blue-text text-darken-4">
                     Computer Society of India
-
                 </h1>
                 <span  style=" font-weight: 700; font-family: cursive; font-size : 300%" class="blue-text text-lighten-3" >  Code Genesis </span>
                 <br>
             </div>
             <div class="col s12 m2 l2"></div>
         </div>
-
         <br>
         <div class="row">
-
-            <div class="col s12 m12 l12 table-responsive">
+            <div class="col s12 m2 l2"></div>
+            <div class="col s12 m8 l8 table-responsive">
                 <table class="responsive-table  bordered blue-text striped " style="padding: 3px; margin: 3px; border : 1px solid black">
                     <tr class="center-align text-darken-4 white-text blue" style="font-weight: 700">
                         <th>Problem ID</th>
@@ -69,7 +64,7 @@
                     {% endfor %}
                 </table>
             </div>
-
+            <div class="col s12 m2 l2"></div>
         </div>
     </div>
 <script>
@@ -79,7 +74,18 @@
 </script>
 </body>
 <style>
-
+    .row
+    {
+        width: 100%;
+        margin: 5px;
+        padding: 5px;
+    }
+    .container
+    {
+        margin: 5px;
+        padding: 5px;
+        width: 100%;
+    }
 
 </style>
 </html>		
